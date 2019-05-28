@@ -28,7 +28,7 @@ class Yiying extends Component {
     console.log('constructor 组件初始化')
   }
   render() {
-    const { boss } = this.props
+    const { boss } = this.props // accept data from father
     return (
       <div>
         <h2>Yiying营长, {boss}</h2>
