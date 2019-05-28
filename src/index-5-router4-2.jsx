@@ -1,10 +1,10 @@
 /*
- * @Description: nodemon server.js
+ * @Description: nodemon server.js, package.json -> "proxy": "http://localhost:9093"
  * @version: 1.0
  * @Author: GanEhank
  * @LastEditors: GanEhank
  * @Date: 2019-04-13 18:16:01
- * @LastEditTime: 2019-04-14 05:55:35
+ * @LastEditTime: 2019-05-28 13:21:24
  */
 
 import React from 'react'

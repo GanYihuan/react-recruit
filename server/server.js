@@ -2,9 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const DB_URL = 'mongodb://localhost:27017/react-chat' // connect mongo, (copy from iTerm mongo)
 
-// connect mongo
-mongoose.connect(DB_URL)
-mongoose.connection.on('connected', function () {
+mongoose.connect(DB_URL) // connect mongo
+mongoose.connection.on('connected', function () { // connect success
   console.log('mongo connect server')
 })
 
@@ -16,15 +15,16 @@ const User = mongoose.model('user', new mongoose.Schema(
       require: true
     },
     age: {
-      type: Number,
+      type: String,
       require: true
     }
   }
 ))
 
-User.create( // create data
+// create data
+User.create(
   {
-    user: 'xiaohua',
+    name: 'xiaohua',
     age: 14
   },
   function (err, doc) {
@@ -36,7 +36,8 @@ User.create( // create data
   }
 )
 
-// User.remove( // detele data
+// detele data
+// User.remove(
 //   {
 //     age: 18
 //   },
@@ -45,7 +46,8 @@ User.create( // create data
 //   }
 // )
 
-// User.update( // change data
+// change data
+// User.update(
 //   {
 //     'name': 'xiaoming'
 //   },
@@ -61,7 +63,8 @@ User.create( // create data
 
 const app = express()
 app.get('/data', function (req, res) {
-  User.find({}, function (err, doc) { // find data
+  // find data
+  User.find({}, function (err, doc) {
     res.json(doc)
   })
 })
