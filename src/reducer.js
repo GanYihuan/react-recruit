@@ -4,7 +4,7 @@
  * @Author: GanEhank
  * @Date: 2019-05-22 20:07:51
  * @LastEditors: GanEhank
- * @LastEditTime: 2019-05-29 15:15:01
+ * @LastEditTime: 2019-05-29 16:33:11
  */
 import { combineReducers } from 'redux'
 import { user } from './redux/user.redux'

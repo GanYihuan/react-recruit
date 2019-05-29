@@ -28,7 +28,7 @@ export function user(state = initState, action) { // reducer
 }
 
 export function loadData(userinfo) {
-  console.log(loadData)
+  // console.log(loadData)
   return { type: LOAD_DATA, payload: userinfo }
 }
 

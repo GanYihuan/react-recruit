@@ -55,7 +55,6 @@ Router.get('/info', function (req, res) {
       return res.json({code: 0, data: doc})
     }
   })
-  // 用户有没有cookie
 })
 
 // add salt, Encryption, protect http://localhost:9093/user/list
