@@ -17,10 +17,10 @@ class App extends React.Component {
       <div>
         <AuthRoute/>
         <Switch>
-          <Route path='/bossinfo' component={BossInfo}/>
-          <Route path='/geniusinfo' component={GeniusInfo}/>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>
+          <Route path='/bossinfo' component={BossInfo}/>
+          <Route path='/geniusinfo' component={GeniusInfo}/>
           <Route path='/chat/:user' component={Chat}/>
           {/* similar 404 page */}
           <Route component={Dashboard}/>

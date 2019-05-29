@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from '../../component/logo/logo'
 import {
   List,
   InputItem,
@@ -9,6 +8,7 @@ import {
 } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import Logo from '../../component/logo/logo'
 import { login } from '../../redux/user.redux'
 import imoocFrom from '../../component/imooc-form/imooc-form.js'
 

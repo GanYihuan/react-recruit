@@ -4,11 +4,15 @@
  * @Author: GanEhank
  * @Date: 2019-05-22 20:07:51
  * @LastEditors: GanEhank
- * @LastEditTime: 2019-05-25 15:35:10
+ * @LastEditTime: 2019-05-29 15:15:01
  */
 import { combineReducers } from 'redux'
 import { user } from './redux/user.redux'
 import { chatuser } from './redux/chatuser.redux'
 import { chat } from './redux/chat.redux'
 
-export default combineReducers({ user, chatuser, chat })
+export default combineReducers({
+  user,
+  chatuser,
+  chat
+})

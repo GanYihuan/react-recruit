@@ -108,20 +108,20 @@ class Chat extends React.Component {
               onChange={v => {
                 this.setState({ text: v })
               }}
-              extra={
-                <div>
-                  <span
-                    style={{ marginRight: 15 }}
-                    onClick={() => {
-                      this.setState({
-                        showEmoji: !this.state.showEmoji
-                      })
-                      this.fixCarousel()
-                    }}
-                  >😃</span>
-                  <span onClick={() => this.handleSubmit()}>发送</span>
-                </div>
-              }
+              // extra={
+              //   <div>
+              //     <span
+              //       style={{ marginRight: 15 }}
+              //       onClick={() => {
+              //         this.setState({
+              //           showEmoji: !this.state.showEmoji
+              //         })
+              //         this.fixCarousel()
+              //       }}
+              //     >😃</span>
+              //     <span onClick={() => this.handleSubmit()}>发送</span>
+              //   </div>
+              // }
             />
           </List>
           {this.state.showEmoji
