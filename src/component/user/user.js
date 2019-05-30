@@ -6,9 +6,9 @@ import {
   WhiteSpace,
   Modal
 } from 'antd-mobile'
+import { Redirect } from 'react-router-dom'
 import browserCookie from 'browser-cookies'
 import { logoutSubmit } from '../../redux/user.redux'
-import { Redirect } from 'react-router-dom'
 
 @connect(
   state => state.user,
@@ -19,7 +19,6 @@ class User extends React.Component {
     super(props)
     this.logout = this.logout.bind(this)
   }
-
   logout() {
     const alert = Modal.alert
     alert('注销', '确认退出登录吗???', [
@@ -31,11 +30,10 @@ class User extends React.Component {
         }
       }
     ])
-    console.log('logout')
+    // console.log('logout')
   }
-
   render() {
-    console.log(this.props)
+    console.log(this.props, 'props---')
     const props = this.props
     const Item = List.Item
     const Brief = Item.Brief
