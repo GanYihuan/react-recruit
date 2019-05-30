@@ -15,7 +15,6 @@ import './index.css'
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
-  // window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
 

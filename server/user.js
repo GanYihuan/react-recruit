@@ -3,14 +3,48 @@ const Router = express.Router()
 const utils = require('utility') // [Encryption](http://localhost:9093/user/list)
 const model = require('./model')
 const User = model.getModel('user')
+const Chat = model.getModel('chat')
 const _filter = {'pwd': 0, '__v': 0}
 
 // [all register info](http://localhost:9093/user/list)
-Router.get('/list', function (req, res) {
-  // User.remove({},function(e,d){})
-  User.find({}, function (err, doc) {
-    return res.json(doc)
-  })
+Router.get('/list', function(req, res){
+	const { type } = req.query
+	// User.remove({}, function(e,d){})
+	User.find({type}, function(err, doc) {
+		return res.json({code:0, data:doc})
+	})
+})
+
+Router.get('/getmsglist',function(req, res){
+	const user = req.cookies.userid
+	User.find({},function(e,userdoc){
+		let users = {}
+		userdoc.forEach(v=>{
+			users[v._id] = {name:v.user, avatar:v.avatar}
+		})
+		Chat.find({'$or':[{from:user},{to:user}]},function(err, doc){
+			if (!err) {
+				return res.json({code:0, msgs:doc, users:users})
+			}
+		})
+	})
+	// {'$or':[{from:user,to:user}]}
+})
+
+Router.post('/readmsg', function(req, res){
+	const userid = req.cookies.userid
+	const {from} = req.body
+	Chat.update(
+		{from,to:userid},
+		{'$set':{read:true}},
+		{'multi':true},
+		function(err,doc){
+		console.log(doc)
+		if (!err) {
+			return res.json({code:0,num:doc.nModified})
+		}
+		return res.json({code:1,msg:'修改失败'})
+	})
 })
 
 Router.post('/update', function(req, res) {

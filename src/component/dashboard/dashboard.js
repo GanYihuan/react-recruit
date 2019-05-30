@@ -1,14 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { NavBar } from 'antd-mobile'
+// import QueueAnim from 'rc-queue-anim'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../../component/boss/boss'
 import Genius from '../../component/genius/genius'
-import User from '../../component/user/user'
-import Msg from '../msg/msg'
+// import User from '../../component/user/user'
+// import Msg from '../msg/msg'
 import { getMsgList, recvMsg } from '../../redux/chat.redux'
-import QueueAnim from 'rc-queue-anim'
+
+// function Boss() {
+//   return <h2>Boos</h2>
+// }
+
+function Msg() {
+  return <h2>Msg</h2>
+}
+
+function User() {
+  return <h2>User</h2>
+}
 
 @connect(
   state => state,
@@ -56,9 +68,15 @@ class Dashboard extends React.Component {
         component: User
       }
     ]
-    const page = navList.find(v => v.path === pathname)
-    const title = page.title
-    // 动画生效，只渲染一个route，根据当前的path决定组件
+    let title
+    navList.forEach((item, index) => {
+      if(item.path === pathname) {
+        title = item.title
+      }
+    })
+    // const page = navList.find(v => v.path === pathname)
+    // const title = page.title
+    // The animation takes effect, rendering only a route, which determines the component based on the current path
     return (
       <div>
         <NavBar
@@ -68,16 +86,21 @@ class Dashboard extends React.Component {
           {title}
         </NavBar>
         <div style={{ marginTop: 45 }}>
-          <QueueAnim
+          {/* <QueueAnim
             type={'scaleX'}
             duration={'800'}
           >
             <Route
-              key={page.path}
-              path={page.path}
-              component={page.component}
+              key={path}
+              path={path}
+              component={component}
             />
-          </QueueAnim>
+          </QueueAnim> */}
+          <Switch>
+            {navList.map(v=>(
+              <Route key={v.path} path={v.path} component={v.component}></Route>
+            ))}
+          </Switch>
         </div>
         <NavLinkBar data={navList}/>
       </div>
